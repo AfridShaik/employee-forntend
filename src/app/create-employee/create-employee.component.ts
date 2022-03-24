@@ -23,13 +23,14 @@ export class CreateEmployeeComponent implements OnInit {
   saveEmployee(){
     this.employeeService.createEmployee(this.employee).subscribe( (data: any) =>{
       console.log(data);
+      window.alert(`Added employee ${this.employee.firstName} ${this.employee.lastName}`)
       this.goToEmployeeList();
     },
       (    error: any) => console.log(error));
   }
 
   goToEmployeeList(){
-    this.router.navigate(['/employees']);
+    this.router.navigate(['/employee']);
   }
 
   onSubmit(){
