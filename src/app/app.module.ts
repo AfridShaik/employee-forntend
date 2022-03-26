@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
 import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { UpdateEmployeeComponent } from './update-employee/update-employee.compo
     EmployeeListComponent,
     CreateEmployeeComponent,
     UpdateEmployeeComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

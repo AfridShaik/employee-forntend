@@ -19,7 +19,7 @@ export class CreateEmployeeComponent implements OnInit {
   employee: Employee = new Employee();
   constructor(private employeeService: EmployeeService,
     private router: Router) { }
-  
+    
   saveEmployee(){
     this.employeeService.createEmployee(this.employee).subscribe( (data: any) =>{
       console.log(data);
