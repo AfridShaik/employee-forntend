@@ -14,11 +14,11 @@ export class EmployeeService {
   
   constructor(private httpClient: HttpClient) { }
 
-  getEmployeesList(): Observable<Employee[]>{
-    return this.httpClient.get<Employee[]>(`${this.baseURL}`);
+  getEmployeesList(): Observable<any>{
+    return this.httpClient.get(`${this.baseURL}`);
   }
 
-  createEmployee(employee: Employee): Observable<Object>{
+  createEmployee(employee: Employee): Observable<any>{
     return this.httpClient.post(`${this.baseURL}`, employee);
   }
   
@@ -35,7 +35,6 @@ export class EmployeeService {
   }
   loginEmployee(employee: Employee):Observable<Object>{
     console.log("employee service component enteres")   
-   return  this.httpClient.post<Employee>(`${this.baseURL}/login`,employee,{responseType: 'string' as 'json'});  
-   
+   return  this.httpClient.post<Employee>(`${this.baseURL}/login`,employee,{responseType: 'string' as 'json'});    
   }
 }
