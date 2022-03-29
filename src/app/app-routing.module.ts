@@ -9,9 +9,9 @@ import { AuthGuardGuard } from './auth-gaurd/auth-guard.guard';
 const routes: Routes = [
   {path : 'employee', component: EmployeeListComponent},
   {path : 'login', component: LoginComponent},
-  {path : 'create-employee', component: CreateEmployeeComponent,canActivate:[AuthGuardGuard]},
-  {path:'',redirectTo:'login', pathMatch:'full'},
-  {path:'update-employee/:id', component:UpdateEmployeeComponent}
+  {path : 'employee/create-employee', component: CreateEmployeeComponent},
+  {path:'update-employee/:id', component:UpdateEmployeeComponent},
+  {path:'',redirectTo:'login', pathMatch:'full'}
 ];
 
 @NgModule({
