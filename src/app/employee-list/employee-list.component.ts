@@ -50,7 +50,7 @@ export class EmployeeListComponent implements OnInit {
     }
     this.employees = results;
     if (results.length === 0 || !key) {
-      this.employeeService.getEmployeesList();
+      this.getEmployees();
     }
 
   }
