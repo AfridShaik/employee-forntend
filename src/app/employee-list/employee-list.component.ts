@@ -52,9 +52,5 @@ export class EmployeeListComponent implements OnInit {
     if (results.length === 0 || !key) {
       this.getEmployees();
     }
-
   }
-
-
-
 }

@@ -14,27 +14,27 @@ export class EmployeeService {
   
   constructor(private httpClient: HttpClient) { }
 
-  getEmployeesList(): Observable<any>{
-    return this.httpClient.get(`${this.baseURL}`);
+  getEmployeesList(): Observable<Employee[]>{
+    return this.httpClient.get<Employee[]>(`${this.baseURL}`);
   }
 
-  createEmployee(employee: Employee): Observable<any>{
-    return this.httpClient.post(`${this.baseURL}`, employee);
+  createEmployee(employee: Employee): Observable<Employee>{
+    return this.httpClient.post<Employee>(`${this.baseURL}`, employee);
   }
   
   getEmployeeById(id: number): Observable<Employee>{
     return this.httpClient.get<Employee>(`${this.baseURL}/${id}`);
   }
 
-  updateEmployee(id: number, employee: Employee): Observable<Object>{
-    return this.httpClient.put(`${this.baseURL}/${id}`, employee);
+  updateEmployee(id: number, employee: Employee): Observable<Employee>{
+    return this.httpClient.put<Employee>(`${this.baseURL}/${id}`, employee);
   }
 
-  deleteEmployee(id: number): Observable<Object>{
-    return this.httpClient.delete(`${this.baseURL}/${id}`);
+  deleteEmployee(id: number): Observable<Employee>{
+    return this.httpClient.delete<Employee>(`${this.baseURL}/${id}`);
   }
   loginEmployee(employee: Employee):Observable<Object>{
     console.log("employee service component enteres")   
-   return  this.httpClient.post<Employee>(`${this.baseURL}/login`,employee,{responseType: 'string' as 'json'});    
+   return  this.httpClient.post<Employee>(`${this.baseURL}/login`,employee,{responseType: 'string ' as 'json'});    
   }
 }
