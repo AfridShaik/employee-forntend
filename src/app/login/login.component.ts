@@ -1,42 +1,39 @@
-  import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Employee } from '../employee';
 import { EmployeeService } from '../employee.service';
-import {LocalStorageService} from 'ngx-webstorage'; 
+import { LocalStorageService } from 'ngx-webstorage';
 import { AuthGuardService } from '../service/auth-guard.service';
+import { User } from '../User';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers:[AuthGuardService]
+  providers: [AuthGuardService]
 })
 export class LoginComponent implements OnInit {
 
-  employee: Employee = new Employee();
+  user: User = new User();
   constructor(private employeeService: EmployeeService,
-    private router: Router, private localstorage:LocalStorageService ) { }
+    private router: Router, private localstorage: LocalStorageService) { }
 
-  ngOnInit(): void 
-  {
-    
+  ngOnInit(): void {
+
   }
-  onSubmit(fn: string | undefined,ln: string | undefined){
+  onSubmit(fn: string | undefined, ln: string | undefined) {
+    this.localstorage.clear('user')
+    console.log("entered the login")
+    this.employeeService.loginEmployee(this.user).subscribe((data: any) => {
+      if (data == "Status.SUCCESS") {
+        this.localstorage.store('user', data)
+        this.router.navigate(['/employee']);
+        this.localstorage.clear('user')
+      } else {
+        window.alert("Login Error")
+      }
 
-    const data = this.employeeService.loginEmployee(this.employee).subscribe( (data: any) =>{
-      if(data == "Status.SUCCESS" ){
-        this.localstorage.store('user',data) 
-      this.router.navigate(['/employee']);
-    }else{
-      window.alert("Login Error")
-    }
-
-      console.log("true   "+data);
-    },);
-
-    
-
-           
+      console.log("true   " + data);
+    });
   }
-
 }

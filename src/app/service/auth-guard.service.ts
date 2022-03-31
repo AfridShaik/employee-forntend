@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import {  CanActivate, Router } from '@angular/router';
 import { LocalStorageService } from 'ngx-webstorage';
 
 @Injectable({
@@ -8,10 +8,7 @@ import { LocalStorageService } from 'ngx-webstorage';
 export class AuthGuardService implements CanActivate {
 
   constructor(private localstorage: LocalStorageService,  private router: Router) { }
-
-
   canActivate(): boolean  {
-
       if(this.localstorage.retrieve('user') == 'Status.SUCCESS'){
         return true;
       }

@@ -26,6 +26,7 @@ import { AuthGuardService } from './service/auth-guard.service';
     HttpClientModule,
     FormsModule,
     NgxWebstorageModule.forRoot(),
+
   ],
   providers: [AuthGuardService],
   bootstrap: [AppComponent]
